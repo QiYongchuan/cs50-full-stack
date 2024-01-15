@@ -41,7 +41,53 @@ example
 ### Merge Conflicts
 
 
+```
+![Alt text](image.png)
+![Alt text](<屏幕截图 2024-01-15 181234.png>)
 
 
+当遇到冲突时，编译器会显示冲突的地方：
+```
+<<<<<< HEAD 
+
+ 在此之间是你的版本
+
+=========
+
+在这里是别人的版本
+
+>>>>>d4e3a8002bfc905
+
+** 你需要做的是判断好要哪一个版本？ 单纯要你的，还是别人的，还是两者的结合？ **
+然后把出现的提示部分删掉，重新add commit，再push上去。
+
+### git log  
+查看历史提交记录
+
+### git reset
+```
+- git reset --hard <commit>
+- git reset --hard origin/master
+
+回退到某一次提交的状态
+
+```
 
 
+### Branching
+
+我们开发的时候有时候不是线性进行的，同时处理多个新功能时，我们开启新的分支。
+
+
+```
+git branch
+
+git checkout -b feature  //创建新的分支并跳转过去
+
+git checkout main  //切换分支
+
+
+git merge feature   // 将feature分支上的内容 merge到当前分支
+
+
+```
