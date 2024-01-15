@@ -89,5 +89,6 @@ git checkout main  //切换分支
 
 git merge feature   // 将feature分支上的内容 merge到当前分支
 
+当对同一行代码修改后，会产生merge conflicts
 
 ```
