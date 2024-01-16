@@ -1,4 +1,4 @@
-## Git
+# Git 的简单用法
 
 ### keep track of changes to code
 
@@ -6,39 +6,39 @@
 * Test changes to code without losing the original
 
 
-### github and git
+## github and git
 
 github  is a website that stores git respositories.
 
 
 
-### git clone
+## git clone
 
 从远程仓库下载到自己本地电脑
 
 
-### git add /git commit
+## git add /git commit
 
 git add 是将变化添加到保存区
 
 git commit 是提交
 
-###  git commit -am "message"   =>两个命令结合
+##  git commit -am "message"   =>两个命令结合
 
 
-### git push
+## git push
 将本地仓库及变化推到远程（github）的仓库中
 
-example
 
-### git pull
+
+## git pull
 
 与git push操作相反，将远程仓库最新的代码，从github上pull下来，同步到本地成最新的;
 
 当远程的代码与本地代码有冲突时，直接将本地代码是无法push到远程的，需要先pull下来，同步，然后再push上去。
 
 
-### Merge Conflicts
+## Merge Conflicts
 
 
 ```
@@ -61,10 +61,10 @@ example
 ** 你需要做的是判断好要哪一个版本？ 单纯要你的，还是别人的，还是两者的结合？ **
 然后把出现的提示部分删掉，重新add commit，再push上去。
 ```
-### git log  
+## git log  
 查看历史提交记录
 
-### git reset
+## git reset
 ```
 - git reset --hard <commit>
 - git reset --hard origin/master
@@ -74,7 +74,7 @@ example
 ```
 
 
-### Branching
+## Branching
 
 我们开发的时候有时候不是线性进行的，同时处理多个新功能时，我们开启新的分支。
 
@@ -92,5 +92,16 @@ git merge feature   // 将feature分支上的内容 merge到当前分支
 当对同一行代码修改后，会产生merge **conflicts*
 
 
+解决冲突的方式同上述所示的pull时发生冲突，修改之后，重新提交。
 
 ```
+
+
+## fork 
+
+将开源代码建立分支到自己github，然后当自己的贡献达到一定时，可以请求poll request到原来的仓库主分支中。
+（理解成更大的协作）
+
+## Github pages
+
+生成一个网址，可以部署自己的静态页面
