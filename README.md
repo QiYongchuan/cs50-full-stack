@@ -19,6 +19,21 @@
 
 
 
-## day01 Html-css-scss
+## 0. Html-css-scss  --2024-1-14
 
-2024-1-14--15完成
+笔记：
+1.响应式实现的几种方式
+2.scss的使用
+
+
+## 1. Git   --2024-1-15
+
+ 笔记：
+ [1.Git的简单使用](https://github.com/QiYongchuan/MyGitBlog/issues/73#issue-2082900526)
+
+ ## 2.Python
+ 
+
+
+
+
