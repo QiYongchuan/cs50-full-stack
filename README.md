@@ -1,7 +1,7 @@
 # CS50x
 
 - [x] 0.html-css-scss
- - [ ] 1. Git
+ - [x] 1. Git
  - [ ] 2.Python
  - [ ] 3. Django
  - [ ] 4.SQL, Models, and Migrations
@@ -22,7 +22,7 @@
 ## 0. Html-css-scss  --2024-1-14
 
 笔记：
-* 1.响应式实现的几种方式
+* [1.响应式实现的几种方式](https://github.com/QiYongchuan/MyGitBlog/issues/75#issue-2082904484)
 * [2.scss的使用](https://github.com/QiYongchuan/MyGitBlog/issues/74#issue-2082902740)
 
 
