@@ -2,7 +2,7 @@
 
 - [x] 0.html-css-scss
  - [x] 1. Git
- - [ ] 2.Python
+ - [x] 2.Python
  - [ ] 3. Django
  - [ ] 4.SQL, Models, and Migrations
  - [ ] 5.JavaScript
@@ -32,6 +32,20 @@
  [1.Git的简单使用](https://github.com/QiYongchuan/MyGitBlog/issues/73#issue-2082900526)
  
 ## 2.Python
+
+
+
+
+## 3.Django
+
+## why Django
+
+仅使用html和css创建的网页是静态网页，每次访问都是相同的网页；
+动态网页则是动态生成html、css以及允许web应用程序的响应，比如评论留言功能
+
+### HTTP协议
+
+
  
 
 
