@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change-Colors</title>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const ButRed = document.querySelector('#Red');
+      const ButBlue = document.querySelector('#Blue');
+      const ButGre = document.querySelector('#Green');
+      const hello = document.querySelector('#hello')
+
+      ButRed.addEventListener('click', function () {
+        hello.innerHTML = 'Red'
+        console.log('点击了butred')
+        hello.style.color = 'red'
+        document.body.style.backgroundColor = 'black'; // 设置整个页面的背景颜色为黑色
+      })
+      ButBlue.addEventListener('click', function () {
+        hello.innerHTML = 'Blue';
+        hello.style.color = "Blue"
+        document.body.style.backgroundColor = 'White'
+      })
+      ButGre.addEventListener('click', function () {
+        hello.innerHTML = 'Green'
+        hello.style.color = 'Green'
+        document.body.style.backgroundColor = 'yellow'
+      })
+    })
+
+  </script>
+</head>
+
+<body>
+  <h1 id="hello"> hello!</h1>
+  <button id="Red">Red</button>
+  <button id="Blue">Blue</button>
+  <button id="Green">Green</button>
+</body>
+
+</html>

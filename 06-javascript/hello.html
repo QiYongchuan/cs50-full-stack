@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello,js</title>
+  <script>
+
+
+    function hello() {
+
+      const heading = document.querySelector("h1");
+      if (heading.innerHTML === "hello") {
+        heading.innerHTML = "Good bye!"
+      } else {
+        heading.innerHTML = "hello"
+      }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      document.querySelector('form').onsubmit = function () {
+        const name = document.querySelector("#name").value;
+        console.log(name)
+        alert(`hello,${name}`)
+      }
+
+    })
+  </script>
+</head>
+
+<body>
+  <h1>hello</h1>
+  <button onclick="hello()">click here</button>
+
+  <form>
+    <input type="text" autofocus placeholder="name" id="name">
+    <input type="submit">
+  </form>
+</body>
+
+</html>
