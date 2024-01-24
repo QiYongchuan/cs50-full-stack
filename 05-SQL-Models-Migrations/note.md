@@ -207,3 +207,7 @@ Out[17]: <QuerySet [<Flight: 1: New York (JFK) to London (LHR) ,duration:415>]>
 
 
 ```
+
+
+Django 提供的admin 以及一些封装好的工具 ，比如login，logout，authentic等等，方便快捷。
+
