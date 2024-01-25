@@ -162,6 +162,42 @@ WHERE username = "hacker"--" AND password = ""
 
 
 
+### models.py  通过model层来控制sql
+
+> 这里涉及到了**外键-多表连接查询**
+```
+
+from django.db import models
+
+# Create your models here.
+
+class Airport(models.Model):
+  code = models.CharField(max_length =3)
+  city = models.CharField(max_length=64)
+  
+  def __str__(self):
+    return f"{self.city} ({self.code})"
+
+class Flight(models.Model):
+  origin = models.ForeignKey(Airport,on_delete=models.CASCADE,related_name="departures")
+  destination = models.ForeignKey(Airport,on_delete=models.CASCADE,related_name="arrivals")
+  duration = models.IntegerField()
+  
+  def __str__(self):
+    return f"{self.id}: {self.origin} to {self.destination} ,duration:{self.duration}"
+  
+  
+class Passenger(models.Model):
+  first = models.CharField(max_length=64)
+  last = models.CharField(max_length=64)
+  flights = models.ManyToManyField(Flight,blank=True,related_name="passengers")    # 这里是指乘客与航班之间存在多对多的关系
+  
+  def __str__(self):
+    return f"{self.first} {self.last}"
+
+```
+
+
 ### python manage.py shell
 
 ```
@@ -210,4 +246,10 @@ Out[17]: <QuerySet [<Flight: 1: New York (JFK) to London (LHR) ,duration:415>]>
 
 
 Django 提供的admin 以及一些封装好的工具 ，比如login，logout，authentic等等，方便快捷。
+
+
+注：
+
+这里的login的前提是，已经有注册过了的账号了，这里是登录。
+而注册，则是通过管理员手动注册的，目前没有开发用户自己注册。
 

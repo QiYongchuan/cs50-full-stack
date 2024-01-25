@@ -142,7 +142,7 @@ Flight.objects.all()
 // 查询命令
 
 
-
+可以在python的命令行中，就相当于可以在python的代码中执行。
 
 ```
 
