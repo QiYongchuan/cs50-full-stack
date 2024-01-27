@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+
+      document.querySelector('form').onsubmit = function () {
+        event.preventDefault(); // 阻止表单默认提交行为
+        let symbols = document.querySelector("#symbol").value.toUpperCase();
+
+        var myHeaders = new Headers();
+        myHeaders.append("apikey", "nLYgfToEUz30ky8tF20s5RIXd6pAnn2f");
+
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow',
+          headers: myHeaders,
+          mode: 'cors' // 添加mode参数为cors   解决浏览器跨域问题
+        };
+
+
+        fetch(`https://api.apilayer.com/exchangerates_data/latest?symbols=${symbols}&base=USD`, requestOptions)
+          .then(response => response.json())
+          .then(data => {
+            if (data.error) {
+              document.querySelector('#result').innerHTML = `${data.error.message}`
+            } else if (data.rates[symbols] !== undefined) {
+              console.log(data)
+              const EURrate = data.rates[symbols];
+              document.querySelector('#result').innerHTML = `1 usd is equal to ${EURrate.toFixed(3)} ${symbols}`;
+            }
+            else {
+              document.querySelector('#result').innerHTML = 'Invalid currency'
+            }
+
+          })
+          .catch(error => console.log('error', error));
+
+        return false;
+
+      }
+
+
+
+    })
+    //   fetch("https://api.apilayer.com/exchangerates_data/latest?symbols={GBP,CHN,EUR}&base=USD", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => console.log(result))
+    //     .catch(error => console.log('error', error));
+
+    // })
+  </script>
+
+</head>
+
+<body>
+  <h1>Currency</h1>
+  <p>输入你的货币</p>
+  <form action="">
+    <input type="text" placeholder="Currency" id="symbol">
+    <input type="submit" placeholder="convert">
+  </form>
+  <q id="result"></q>
+</body>
+
+</html>

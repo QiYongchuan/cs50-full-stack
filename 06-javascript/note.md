@@ -75,3 +75,23 @@
 
 ```
 
+
+### Local Storage
+
+* localStorage.getItem(key)
+* localStorage.setItem(key,value)
+
+
+
+### objects
+
+
+###  API
+application programming interfaces
+
+
+JSON  javascript object notation,以js对象的形式传输数据
+
+
+
+Ajax  是关于同步JavaScript的，即使在页面加载之后，使用JavaScript我们可以提出额外的网络请求去访问更多的信息，来自我们自己的网络服务器或者一些第三方的网络服务器，如果我们想在我们的页面上获取更多的信息，在这种情况下我们想要的是我们的页面做一个请求额外数据的同步请求
