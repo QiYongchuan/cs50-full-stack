@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tasksArray = []; // 用于存储已提交的任务
+      // default ,submit is disable  to achieve make user not submit nothing
+      document.querySelector('#submit').disabled = true;
+      document.querySelector('#task').onkeyup = () => {
+        const inputValue = document.querySelector('#task').value.trim(); // 获取输入值并去除首尾空格
+        //增加一个判断，在输入框按下内容后，又清空的情况下，也禁止输入
+        if (document.querySelector('#task').value.length > 0 && !tasksArray.includes(inputValue)) {
+          document.querySelector('#submit').disabled = false;
+        }
+        else {
+          document.querySelector('#submit').disabled = true;
+        }
+
+      }
+
+      document.querySelector('form').onsubmit = function () {
+        const task = document.querySelector('#task').value.trim();
+        if (tasksArray.includes(task)) {
+          // 如果任务已存在，则不添加到列表并清空输入框
+          document.querySelector('#task').value = '';
+          alert('This task has already been added.'); // 可选：向用户显示警告消息
+          return false; // 防止表单提交
+        }
+
+        console.log(task);
+        tasksArray.push(task)  // 将新任务添加到数组中
+        const li = document.createElement("li");
+        li.innerHTML = task;
+
+        document.querySelector('#tasks').append(li)
+
+        document.querySelector('#task').value = '';   //在每次提交之后，将输入框中的内容制成空
+        document.querySelector('#submit').disabled = true;  //每次提交之后，将提交按钮设置成禁止提交，只有重新在输入框输入东西才可以
+
+
+        //  stop submit to server make sure everything run in client
+        // stop form from submitting
+        return false
+      }
+
+    })
+  </script>
+</head>
+
+<body>
+  <h1>Tasks</h1>
+  <ul id="tasks"></ul>
+  <form action="">
+    <input type="text" id="task" placeholder="New task">
+    <input id="submit" type="submit">
+
+  </form>
+</body>
+
+</html>
