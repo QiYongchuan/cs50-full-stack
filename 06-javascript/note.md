@@ -95,3 +95,27 @@ JSON  javascript object notation,以js对象的形式传输数据
 
 
 Ajax  是关于同步JavaScript的，即使在页面加载之后，使用JavaScript我们可以提出额外的网络请求去访问更多的信息，来自我们自己的网络服务器或者一些第三方的网络服务器，如果我们想在我们的页面上获取更多的信息，在这种情况下我们想要的是我们的页面做一个请求额外数据的同步请求
+
+** 也就是只加载页面的一部分 **
+
+
+
+### Window 
+
+![Alt text](%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240129132318.png)
+
+* window 是目前窗口
+* document是整个文档
+* window.scrollY 窗口向下滑动的的距离，如果没有滑动就是0
+* document.body.offsetHeight是整个文档的高度
+* window.innerHeight与windo.innerWidth是当前窗口的高的宽
+
+利用上述的属性,可以:
+1.检测用户是否滑动到了底部？
+
+window.scrollY+window.innerHeight = document.body.offsetHeight
+
+
+2.结合ajax，实现无限滚动
+  1.检测是否到浏览器的底部
+  2.结合ajax使用JavaScript的异步操作，异步加载

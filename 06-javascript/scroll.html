@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scroll</title>
+  <script>
+
+
+    window.onscroll = () => {
+      if (window.scrollY + window.innerHeight >= document.body.offsetHeight - 5) {
+        console.log('到底了')
+        console.log(window.scrollY, window.innerHeight, document.body.offsetHeight);
+        document.querySelector("body").style.backgroundColor = 'green'
+        document.querySelector('#secret').innerHTML = "浏览更多"
+      } else {
+        document.querySelector("body").style.backgroundColor = 'white'
+      }
+      console.log(window.scrollY, window.innerHeight, document.body.offsetHeight);
+
+    }
+
+  </script>
+</head>
+
+<body>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <div id="secret"></div>
+</body>
+
+</html>
