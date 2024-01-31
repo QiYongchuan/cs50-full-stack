@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <style>
+    @keyframes hide {
+      0% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      75% {
+        opacity: 0;
+        height: 100%;
+        line-height: 100%;
+        padding: 20px;
+        margin-bottom: 10px;
+      }
+
+      100% {
+        opacity: 0;
+        height: 0;
+        line-height: 0%;
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      /* 设置不透明有高度，到不透明，没有高度的原因：增加了动画过渡的效果 */
+    }
+
+    #posts {
+      display: flex;
+      flex-direction: column;
+      /* 确保帖子垂直排列 */
+      align-items: center;
+      /* 在主轴上居中对齐子元素 */
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .post {
+      height: 80px;
+      background: rgb(43, 224, 43);
+      margin-bottom: 5px;
+      width: 100%;
+      animation-name: hide;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+      position: relative;
+    }
+
+    .hide-btn {
+      padding: 5px 10px;
+      margin-top: 20px;
+      position: absolute;
+      right: 45px;
+      /* 更新：使用 right 替代 left 来定位按钮 */
+      top: -6px;
+      /* 新增：定位按钮距离顶部的位置 */
+      /* 根据需要调整 */
+      background-color: #f44336;
+      /* 红色按钮 */
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+
+    //  如何实现监听所有的button来实现隐藏的功能？
+    //  步骤：  1.监听所有的button  2.实现隐藏功能
+
+    // 监听所有的button
+    document.addEventListener('click', event => {
+      const element = event.target
+      if (element.className === 'hide-btn') {
+        // element.remove()   //这里实现的是隐藏对应的按钮的功能
+        // element.parentElement.remove()  //应该移除对应按钮的父元素
+        element.parentElement.style.animationPlayState = 'running'  //通过动画方式（cssd的透明度）来实现隐藏
+        element.parentElement.addEventListener('animationend', () => {
+          element.parentElement.remove();   //在动画结束后，把相应的元素也移除掉，否则当前元素还存在，只是不透明了
+        })
+      }
+    })
+
+
+
+    let isLoading = false; // 添加一个标志变量来控制加载操作
+
+    window.onscroll = () => {
+      if ((window.innerHeight + window.scrollY > document.body.offsetHeight) && !isLoading) {
+        isLoading = true; // 设置标志变量为true，表示加载操作开始
+        load();
+        console.log('开始加载');
+        console.log(window.innerHeight, window.scrollY, document.body.offsetHeight);
+      }
+    }
+
+
+    //start with first post
+    let counter = 1;
+
+    //  load posts 20 at a time
+    const quantity = 20;
+
+    //when Dom loads ,render the first 20 posts
+    document.addEventListener("DOMContentLoaded", load)
+
+    // load next set of posts
+    function load() {
+      //set Start and end post numbers,and update counter
+      const start = counter;
+      const end = start + quantity - 1;
+      counter = end + 1;
+
+      // Get new posts and add posts
+      fetch(`posts?start=${start}&end=${end}`)
+        .then(response => response.json())
+        .then(data => {
+          data.posts.forEach(add_post);
+          console.log(data.posts);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+
+      // Add a new post with given contents to DOM
+      function add_post(contents) {
+        // Create new post
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.innerHTML = contents + '<button class="hide-btn">Hide</button>';
+
+        // Add post to DOM
+        document.querySelector('#posts').append(post)
+      }
+      isLoading = false; // 加载完成后将标志变量设置为false
+    }
+  </script>
+</head>
+
+<body>
+  <div id="posts">
+
+  </div>
+</body>
+
+</html>
