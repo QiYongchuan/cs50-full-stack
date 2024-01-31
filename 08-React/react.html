@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 React 库文件 -->
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <!-- 引入react-dom，用于支持react操作DOM -->
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <title>React</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    function Hello(props) {
+      return (
+        <h1>Hello,{props.name}</h1>
+      )
+    }
+    function App() {
+      return (
+        <div>
+          <Hello name="harry" />
+          <Hello name="Ron" />
+          <Hello name="Herminone" />
+        </div>
+
+      )
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"))
+  </script>
+  <!-- 告诉浏览器将jsx代码翻译成js代码 -->
+</body>
+
+</html>

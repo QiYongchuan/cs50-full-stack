@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 React 库文件 -->
+  <script src="https://unpkg.com/react/umd/react.development.js"></script>
+  <!-- 引入react-dom，用于支持react操作DOM -->
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    #app {
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 60px;
+    }
+
+    input {
+      width: 300px;
+      height: 50px;
+    }
+
+    #problem {
+      font-size: 172px;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    #winner {
+      color: chocolate;
+      font-size: 172px;
+    }
+  </style>
+  <title>Addition</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+
+    function App() {
+      const [state, setState] = React.useState({
+        num1: 1,
+        num2: 2,
+        response: "",
+        score: 0,
+        isCorrect: true
+      })
+      function updateResponse(event) {
+        setState({
+          // num1:state.num1,
+          // num2:state.num2,  等价于...state
+          ...state,
+          response: event.target.value
+        })
+      };
+      function inputKeyPress(event) {
+        if (event.key === "Enter") {
+          const answer = parseInt(state.response)
+          if (state.num1 + state.num2 === answer) {
+            // 
+            setState({
+              ...state,
+              num1: Math.ceil(Math.random() * 10),
+              num2: Math.ceil(Math.random() * 10),
+              response: '',
+              isCorrect: true,
+              score: state.score + 1,
+            })
+          } else {
+            // 
+            setState({
+              ...state,
+              response: '',
+              isCorrect: false,
+              score: state.score - 1,
+            })
+
+          }
+        }
+      };
+
+      if (state.score === 10) {
+        return (
+          <div id="winner">
+            You Won!🎉
+          </div>
+        )
+      }
+
+      return (
+        <div>
+          <div className={state.isCorrect ? "" : "incorrect"} id="problem">{state.num1}+{state.num2}</div>
+          <input autoFouse={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response} />
+          <div>score:{state.score}</div>
+        </div>
+      )
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"))
+  </script>
+  <!-- 告诉浏览器将jsx代码翻译成js代码 -->
+</body>
+
+</html>
