@@ -199,3 +199,22 @@ html {
 
 
 ```
+
+
+### css动画与js代码结合，js控制css动画
+
+
+主要是通过 控制   h1.style.animationPlayState = 'paused'/'running'
+来控制动画的运行或者不允许
+```
+ document.querySelector('button').onclick = () => {
+        if (h1.style.animationPlayState === 'paused') {
+          h1.style.animationPlayState = 'running'
+          console.log('running');
+        } else {
+          h1.style.animationPlayState = 'paused'
+          console.log('paused');
+        }
+      }
+    })
+```
