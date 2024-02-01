@@ -57,3 +57,12 @@ jobs:
 
 
 ```
+
+运行结果：
+即将本地写的test 测试代码，在工作流中运行了
+![Alt text](image.png)
+
+![Alt text](image-1.png)
+
+每一次提交（push），都会触发一次
+![Alt text](image-2.png)
