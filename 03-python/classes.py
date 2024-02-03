@@ -26,7 +26,7 @@ class Flight():
    
 flight = Flight(3)
 
-print(f"openseats is {flight.open_seats}")
+print(f"openseats is {flight.open_seats()}")
 
 
 names = ["harry","Ron","heri","Ginny"]
@@ -37,3 +37,13 @@ for person in names:
       print(f"successful add {person} in flight")
 else:
       print(f"{person} is not add in flight")
+      
+      
+      
+# 如何理解面向对象？
+
+
+
+
+
+# 扩展：
